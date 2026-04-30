@@ -2,6 +2,12 @@ import Link from 'next/link'
 import { projects } from '@/lib/projects'
 import { notFound } from 'next/navigation'
 
+export function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.id,
+  }))
+}
+
 export default function ProjectPage({ params }) {
   const project = projects.find(p => p.id === params.id)
 
